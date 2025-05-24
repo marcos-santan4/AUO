@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://cjqs8feaprldt"]
+
+[ext_resource type="Script" uid="uid://djo6a0vhctiix" path="res://scripts/laser_inimigo.gd" id="1_0j3oi"]
+[ext_resource type="Texture2D" uid="uid://c1r7pa70p6pip" path="res://assets/Laser/red/laserRed09.png" id="1_kgy5p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0j3oi"]
+size = Vector2(38, 38)
+
+[node name="LaserInimigo" type="Area2D"]
+script = ExtResource("1_0j3oi")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("1_kgy5p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_0j3oi")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

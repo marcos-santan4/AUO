@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=3 uid="uid://d3ihylxxuok3f"]
+
+[ext_resource type="Texture2D" uid="uid://6vcjmforervp" path="res://assets/Background/mapa1.png" id="1_u7fro"]
+[ext_resource type="PackedScene" uid="uid://dq5hpms0lkfhv" path="res://scenes/nave.tscn" id="2_u5pyp"]
+[ext_resource type="Texture2D" uid="uid://bi5k83fv0bup" path="res://assets/Stars/star1.png" id="2_u7fro"]
+[ext_resource type="Texture2D" uid="uid://ds21bq8g1ua2a" path="res://assets/Stars/star2.png" id="3_ktbmo"]
+[ext_resource type="PackedScene" uid="uid://buv5benjyyr6q" path="res://scenes/nave_inimiga.tscn" id="5_ktbmo"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fh0dc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_u7fro")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ktbmo")
+}],
+"loop": true,
+"name": &"default",
+"speed": 0.9
+}]
+
+[node name="Fase1" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(322.5, 579.5)
+scale = Vector2(0.635742, 0.749349)
+texture = ExtResource("1_u7fro")
+
+[node name="stars" type="AnimatedSprite2D" parent="Background"]
+modulate = Color(1, 1, 1, 0.388235)
+position = Vector2(206.579, 145.341)
+scale = Vector2(0.521153, 0.521153)
+sprite_frames = SubResource("SpriteFrames_fh0dc")
+autoplay = "default"
+frame_progress = 0.0259858
+
+[node name="stars2" type="AnimatedSprite2D" parent="Background"]
+modulate = Color(1, 1, 1, 0.388235)
+position = Vector2(193.678, -141.501)
+scale = Vector2(0.500915, 0.500915)
+sprite_frames = SubResource("SpriteFrames_fh0dc")
+autoplay = "default"
+frame_progress = 0.798951
+
+[node name="Nave" parent="." instance=ExtResource("2_u5pyp")]
+position = Vector2(275, 800)
+
+[node name="NaveInimiga" parent="." instance=ExtResource("5_ktbmo")]
+position = Vector2(268, 284)
