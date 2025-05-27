@@ -7,6 +7,7 @@
 size = Vector2(38, 38)
 
 [node name="LaserInimigo" type="Area2D"]
+collision_layer = 8
 script = ExtResource("1_0j3oi")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

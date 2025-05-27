@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dq5hpms0lkfhv"]
+[gd_scene load_steps=21 format=3 uid="uid://dq5hpms0lkfhv"]
 
 [ext_resource type="Texture2D" uid="uid://dyqwnn5o1na7f" path="res://assets/Explosion/Explosion_5/Explosion_1.png" id="1_c2r7p"]
 [ext_resource type="Script" uid="uid://gpfes1gc82t8" path="res://scripts/nave.gd" id="1_q2beb"]
@@ -15,6 +15,9 @@
 [ext_resource type="Texture2D" uid="uid://bypnnog23tr8f" path="res://assets/hit_1.png" id="13_q2beb"]
 [ext_resource type="Texture2D" uid="uid://chxr5pgu70xwq" path="res://assets/nave_1_1.png" id="14_s65an"]
 [ext_resource type="Texture2D" uid="uid://cvsv1wp2t8p58" path="res://assets/nave_2_2.png" id="15_hl4qi"]
+[ext_resource type="AudioStream" uid="uid://bqgdlmmxax7eg" path="res://assets/Audio/Laser/laser-gun.mp3" id="16_q2beb"]
+[ext_resource type="AudioStream" uid="uid://cwb8lupwswlwl" path="res://assets/Audio/Hit/hit.wav" id="17_dfdxw"]
+[ext_resource type="AudioStream" uid="uid://bblj2keiehi1l" path="res://assets/Audio/Explosion/explosion_nave.wav" id="18_22tm4"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ju8v5"]
 animations = [{
@@ -83,15 +86,16 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qbswl"]
-radius = 45.0
-height = 100.0
+radius = 24.0
+height = 64.0
 
 [node name="Nave" type="CharacterBody2D"]
 z_index = 1
+collision_mask = 10
 script = ExtResource("1_q2beb")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.3, 0.3)
+scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_ju8v5")
 animation = &"idle"
 autoplay = "idle"
@@ -103,11 +107,22 @@ position = Vector2(0, 2)
 shape = SubResource("CapsuleShape2D_qbswl")
 
 [node name="Label" type="Label" parent="."]
-offset_left = -8.0
-offset_top = 69.0
-offset_right = 32.0
-offset_bottom = 92.0
+offset_left = -10.0
+offset_top = 48.0
+offset_right = 30.0
+offset_bottom = 71.0
 scale = Vector2(0.5, 0.5)
 size_flags_horizontal = 0
 text = "100"
+horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
+
+[node name="LaserSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("16_q2beb")
+volume_db = -5.0
+
+[node name="HitSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("17_dfdxw")
+
+[node name="ExplosionDeath" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("18_22tm4")

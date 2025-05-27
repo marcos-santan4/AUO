@@ -1,0 +1,83 @@
+[gd_scene load_steps=6 format=3 uid="uid://blct0672gloeb"]
+
+[ext_resource type="Script" uid="uid://5783ebgkrtyv" path="res://scripts/control.gd" id="1_brbbq"]
+[ext_resource type="Texture2D" uid="uid://ya6iwrqob2a4" path="res://assets/Background/menu.png" id="1_r67kn"]
+[ext_resource type="FontFile" uid="uid://c3b4gl7w1sh2a" path="res://assets/Font/Vermin Vibes 1989.ttf" id="2_brbbq"]
+[ext_resource type="AudioStream" uid="uid://dnch6k58kf5yv" path="res://assets/Audio/Soundtrack/Menu/audio 1.mp3" id="4_8n18e"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_8n18e"]
+font = ExtResource("2_brbbq")
+font_size = 90
+shadow_size = 30
+shadow_color = Color(0.575948, 0.573166, 0.565591, 0.47451)
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_brbbq")
+
+[node name="Menu" type="Sprite2D" parent="."]
+position = Vector2(326.75, 575)
+scale = Vector2(0.643066, 0.755208)
+texture = ExtResource("1_r67kn")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0352941, 0.0352941, 0.0352941, 0.831373)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -170.0
+offset_top = 167.0
+offset_right = 170.0
+offset_bottom = 413.0
+grow_horizontal = 2
+text = "The
+      Last
+ Order"
+label_settings = SubResource("LabelSettings_8n18e")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -88.0
+offset_top = 60.0
+offset_right = 89.0
+offset_bottom = 202.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="Start" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_brbbq")
+theme_override_font_sizes/font_size = 60
+text = "Iniciar"
+
+[node name="Exit" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_brbbq")
+theme_override_font_sizes/font_size = 60
+text = "Sair"
+
+[node name="BackgroundMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_8n18e")
+
+[connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="VBoxContainer/Exit" to="." method="_on_exit_pressed"]
